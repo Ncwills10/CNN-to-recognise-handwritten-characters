@@ -1,0 +1,50 @@
+This is a handwriting recogntion software using a convolution neural
+network in python (recommended for EMNIST). I am using the EMNIST balanced
+dataset to train it.
+I downloaded the EMNIST dataset (Cohen, G., Afshar, S., Tapson, J., & van 
+Schaik, A. (2017). EMNIST: an extension of MNIST to handwritten letters.
+Retrieved from http://arxiv.org/abs/1702.05373) 
+from Chris Crawford on Kaggle. 
+
+Structure:
+This CNN consists of 3 convolution layers with 32, 64 and 64 filters
+respectively. After each convolution layer, it also has a max pooling layer.
+Then it has a flattening layer, then one fully connected layer of 64 neurons.
+Finally, it has an output layer of 47 classes. The ReLU activation function is 
+applied after each convolution layer, the fully connected layer and the output
+layer.
+
+Dimensions:
+Each 4D array has dimensions (no. in the batch, height, width, no. of channels)
+The 3D filter arrays have dimensions (no. of filters, height, width)
+The 2D flattening layer arrays have dimensions (no. in the batch, flattened length = product of each dimenion in the input to the layer except for the no. in the batch dimension)
+The 2D fully connected layer arrays have dimensions (no. in the batch, no. of neurons)
+The 2D output layer arrays have dimensions (no. in the batch, no. of classes)
+
+Input (10, 28, 28, 1)
+Output and dOutput of first convolution layer (10, 26, 26, 32)
+Filters and dFilters of first convolution layer (32, 3, 3)
+Biases and dBiases of first convolution layer (10, 26, 26, 32)
+Output and dOutput of first max pooling layer (10, 24, 24, 32)
+Output and dOutput of second convolution layer (10, 22, 22, 2048)
+Filters and dFilters of second convolution layer (64, 3, 3)
+Biases and dBiases of second convolution layer (10, 22, 22, 2048)
+Output and dOutputof second max pooling layer (10, 20, 20, 2048)
+Output and dOutput of third convolution layer (10, 18, 18, 131072)
+Filters and dFilters of third convolution layer (64, 3, 3)
+Biases and dBiases of third convolution layer (10, 18, 18, 131072)
+Output and dOutput of third max pooling layer (10, 16, 16, 131072)
+Output and dOutput of flattening layer (10, 33554432)
+Output and dOutput of fully connected layer (10, 64)
+Weights and dWeights of fully connected layer (33554432, 64)
+Biases and dBiases of fully connected layer (10, 64)
+Output and dOutput of output layer (10, 47)
+Weights and dWeights of output layer (64, 47)
+Biases and dBiases of output layer (10, 47)
+
+
+
+Bibliography:
+What is a CNN? https://www.youtube.com/watch?v=YRhxdVk_sIs
+What is a CNN? https://www.youtube.com/watch?v=K_BHmztRTpA
+Inspiration for layout: https://wandb.ai/wandb/emnist/reports/EMNIST-Classification--VmlldzoyMjE1MzM#:~:text=Convolutional%20Neural%20Network%20based%20image%20classifiers%20are%20popular%20because%20they%20work%20well.
